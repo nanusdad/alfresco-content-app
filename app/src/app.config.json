@@ -30,7 +30,7 @@
   "application": {
     "name": "Workspace",
     "version": "4.1.0",
-    "logo": "assets/images/app-logo.svg",
+    "logo": "assets/images/app-logo.jpg",
     "copyright": "APP.COPYRIGHT"
   },
   "viewer.maxRetries": 1,
