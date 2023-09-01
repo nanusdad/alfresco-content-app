@@ -36,6 +36,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialog } from '@angular/material/dialog';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
 
 @Component({
   standalone: true,
@@ -63,7 +65,7 @@ export class ViewProfileComponent implements OnInit, OnDestroy {
   appNavNarMode$: Observable<'collapsed' | 'expanded'>;
   private onDestroy$ = new Subject<boolean>();
 
-  constructor(private router: Router, apiService: AlfrescoApiService, private appService: AppService) {
+  constructor(private router: Router, apiService: AlfrescoApiService, private appService: AppService, public dialog: MatDialog) {
     this.peopleApi = new PeopleApi(apiService.getInstance());
     this.appNavNarMode$ = appService.appNavNarMode$.pipe(takeUntil(this.onDestroy$));
   }
@@ -204,6 +206,16 @@ export class ViewProfileComponent implements OnInit, OnDestroy {
 
   isSaveButtonDisabled(): boolean {
     return this.profileForm.invalid;
+  }
+
+  openChangePasswordDialog(): void {
+    const dialogRef = this.dialog.open(ChangePasswordComponent, {
+      width: '250px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
   ngOnDestroy() {

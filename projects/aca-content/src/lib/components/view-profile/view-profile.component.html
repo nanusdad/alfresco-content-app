@@ -26,6 +26,8 @@
         <button mat-raised-button class="app-general-save-btn" id="general-save-button" [disabled]="profileForm.invalid"
           (click)="onSaveGeneralData(profileForm)">{{'APP.EDIT_PROFILE.SAVE' | translate}}</button>
       </div>
+      <button mat-raised-button class="app-general-change-password-btn" id="change-password-button"
+        (click)="openChangePasswordDialog()">{{'APP.EDIT_PROFILE.CHANGE_PASSWORD' | translate}}</button>
     </div>
     <mat-divider class="app-mat-divider" *ngIf="generalSectionDropdown"></mat-divider>
     <div *ngIf="generalSectionDropdown">
